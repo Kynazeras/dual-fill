@@ -1,4 +1,4 @@
-import { RootRoute, Outlet, Link } from '@tanstack/react-router';
+import { RootRoute, Outlet } from '@tanstack/react-router';
 import { Navbar } from '../_layout/Navbar';
 import { ThemeProvider } from '@/components/theme-provider';
 
