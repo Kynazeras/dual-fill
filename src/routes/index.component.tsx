@@ -19,7 +19,7 @@ const formSchema = z.object({
 
 type FormInputs = z.infer<typeof formSchema>;
 
-const Tool = () => {
+const Index = () => {
   const form = useForm<FormInputs>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -52,4 +52,4 @@ const Tool = () => {
   );
 };
 
-export const component = Tool;
+export const component = Index;

@@ -8,20 +8,10 @@ import { Route as rootRoute } from './routes/__root'
 
 // Create Virtual Routes
 
-const ToolComponentImport = new FileRoute('/tool').createRoute()
 const GuideComponentImport = new FileRoute('/guide').createRoute()
+const IndexComponentImport = new FileRoute('/').createRoute()
 
 // Create/Update Routes
-
-const ToolComponentRoute = ToolComponentImport.update({
-  path: '/tool',
-  getParentRoute: () => rootRoute,
-} as any).update({
-  component: lazyRouteComponent(
-    () => import('./routes/tool.component'),
-    'component',
-  ),
-})
 
 const GuideComponentRoute = GuideComponentImport.update({
   path: '/guide',
@@ -33,16 +23,26 @@ const GuideComponentRoute = GuideComponentImport.update({
   ),
 })
 
+const IndexComponentRoute = IndexComponentImport.update({
+  path: '/',
+  getParentRoute: () => rootRoute,
+} as any).update({
+  component: lazyRouteComponent(
+    () => import('./routes/index.component'),
+    'component',
+  ),
+})
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/guide': {
-      preLoaderRoute: typeof GuideComponentImport
+    '/': {
+      preLoaderRoute: typeof IndexComponentImport
       parentRoute: typeof rootRoute
     }
-    '/tool': {
-      preLoaderRoute: typeof ToolComponentImport
+    '/guide': {
+      preLoaderRoute: typeof GuideComponentImport
       parentRoute: typeof rootRoute
     }
   }
@@ -51,6 +51,6 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 export const routeTree = rootRoute.addChildren([
+  IndexComponentRoute,
   GuideComponentRoute,
-  ToolComponentRoute,
 ])

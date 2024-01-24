@@ -70,7 +70,7 @@ export const Navbar = () => {
                 <Link to='/guide' className={desktopNavLinkClasses}>
                   Guide
                 </Link>
-                <Link to='/tool' className={desktopNavLinkClasses}>
+                <Link to='/' className={desktopNavLinkClasses}>
                   Tool
                 </Link>
               </div>
@@ -94,7 +94,7 @@ export const Navbar = () => {
             Guide
           </Link>
           <Link
-            to='/tool'
+            to='/'
             className='text-gray-300 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium [&.active]:font-bold [&.active]bg-gray-900'
           >
             Tool

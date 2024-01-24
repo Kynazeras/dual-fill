@@ -62,7 +62,7 @@ const Guide = () => {
           </li>
           <li className='text-lg'>
             Paste those lists into the{' '}
-            <Link to='/tool' className='underline text-bold'>
+            <Link to='/' className='underline text-bold'>
               Tool
             </Link>
           </li>
