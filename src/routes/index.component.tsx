@@ -36,7 +36,7 @@ const Index = () => {
     <main className='text-center h-full'>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(onSubmit)}>
-          <div className='grid grid-cols-2 gap-8 p-4'>
+          <div className='grid sm:grid-cols-1 lg:grid-cols-2 gap-8 p-4'>
             <DeckListInput label='Front Deck' fieldName='frontDeck' />
             <DeckListInput label='Back Deck' fieldName='backDeck' />
           </div>

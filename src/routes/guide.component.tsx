@@ -73,6 +73,21 @@ const Guide = () => {
             choose the one you generated here
           </li>
         </ol>
+        <h2 className='text-bold text-2xl my-1'>FAQs</h2>
+        <h3 className='text-bold text-xl my-1'>
+          How do I add <i>actual</i> dual-faced cards?
+        </h3>
+        <p className='text-lg'>
+          If you are using a card that is dual-faced, you have two options
+        </p>
+        <ol className='list-decimal'>
+          <li className='text-lg'>Use that card in both decks</li>
+          <li className='text-lg'>
+            Find a printing on MPCFill that has both modes on one side of the
+            card. Not all cards have this type of art so you will have to get
+            lucky
+          </li>
+        </ol>
       </div>
     </main>
   );
