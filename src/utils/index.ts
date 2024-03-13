@@ -20,11 +20,9 @@ export const getAllBasicLands = (deck: string[]) => {
 export const sortDeck = ({
   deck,
   intersectionCards,
-  // options,
 }: {
   deck: string[];
   intersectionCards: string[];
-  options?: any;
 }) => {
   const allBasics = getAllBasicLands(deck);
   let sortedDeck: string[] = [...intersectionCards, ...allBasics];
@@ -35,7 +33,7 @@ export const sortDeck = ({
 };
 
 export const finalOutput = (front: string, back: string) => {
-  let rows: [number, string, string][] = [];
+  let rows: [number, string, string, string, string][] = [];
   const frontDeck = flattenDeck(front);
   const backDeck = flattenDeck(back);
   const intersectionCards: string[] = intersect(backDeck, frontDeck).filter(
@@ -44,13 +42,14 @@ export const finalOutput = (front: string, back: string) => {
   const frontDeckSorted = sortDeck({ deck: frontDeck, intersectionCards });
   const backDeckSorted = sortDeck({ deck: backDeck, intersectionCards });
   frontDeckSorted.forEach(
-    (card, index) => (rows = [...rows, [1, card, backDeckSorted[index]]])
+    (card, index) =>
+      (rows = [...rows, [1, card, '\t ', backDeckSorted[index], '\t ']])
   );
   let csvContent = 'data:text/csv;charset=utf-8,';
   // add default headers
-  csvContent += `Quantity, Front, Back\r\n`;
+  csvContent += `Quantity,Front,Front ID,Back,Back ID\r\n`;
   rows.forEach((arr) => {
-    let row = arr.join(',');
+    const row = arr.join(',');
     csvContent += row + '\r\n';
   });
   return csvContent;
